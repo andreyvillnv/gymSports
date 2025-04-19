@@ -33,5 +33,5 @@ app.use(express.static(join(dir_name, "public")));
 app.listen(process.env.PORT || 3030);
 //const host = '0.0.0.0'
 console.log(
-  `Server is  listening on port  http://${host}:${process.env.PORT || 3030}`
+  `Server is  listening on port ${process.env.PORT || 3030}`
 );
