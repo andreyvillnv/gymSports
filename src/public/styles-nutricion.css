@@ -1,0 +1,86 @@
+form{
+    display: flex;
+    flex-direction: column;
+    height: 568px;
+    width: 323px;
+    border: 1px, solid, #757575;
+    border-radius: 8px;
+    padding: 24px;
+}
+.nutricion h2{
+    margin-bottom: 4px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+input{
+    border-radius: 8px;
+    border: none;
+}
+label{
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+textarea{
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+input:focus {
+    outline: none;
+    border: none; /* Opcional: también quita el borde si lo tiene */
+    box-shadow: none; /* Opcional: elimina cualquier sombra */
+}
+
+textarea:focus {
+    outline: none;
+    border: none; /* Opcional: también quita el borde si lo tiene */
+    box-shadow: none; /* Opcional: elimina cualquier sombra */
+}
+.fecha{
+    height: 28px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 2px;
+}
+
+.hora{
+    height: 28px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 4px;
+}
+
+.descripcion{
+    height: 126px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 2px; 
+}    
+
+.boton-cita, #btn-paypal{
+    margin: 6px;     
+    border: none;
+    border-radius: 8px;
+    height: 34px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+#btn-paypal{
+    background-color: #0038ba;
+}
+.boton-cita{
+    background-color: #E31C25;
+}
+
+.logo img{
+   
+    width: 100px;
+}

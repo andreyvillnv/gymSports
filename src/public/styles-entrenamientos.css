@@ -1,0 +1,51 @@
+
+h2{
+  
+    margin-bottom: 75px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 104px;
+}
+.tarjetas{
+    display: flex;
+
+}
+.tarjetas a {
+    text-decoration: none;
+    color: #E31C25;
+    text-align: center;
+    margin-bottom: 14px;
+
+}
+
+h3{
+    font-size: 14px;
+}
+.tarjeta{
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 122px;
+    height: 182px;
+    background-color: #ffffff;
+}
+
+.tarjeta img{
+    width: 90px;
+    height: 90px;
+    
+}
+.masaMuscular{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.logo{
+    margin-top: 85px;
+}

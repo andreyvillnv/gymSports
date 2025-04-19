@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/styles-generales.css">
+    <link rel="stylesheet" href="/styles-perfil.css">
+    <link rel="stylesheet" href="/styles-tarjeta.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="barra-superior">
+            <h1>Perfil</h1>
+        </div>
+        <section class="container">
+            <!-- <section class="section-datos-persolanes">
+                <div class="datos-personales">
+                    <p>Nombre: <%-nombre%> </p>
+                    <p>Fecha de nacimento: <%-fecha%> </p>
+                    <p>Estatura: <%-estatura%></p>
+                    <p>Peso: <%-peso%></p>
+                </div>
+                <div class="foto-perfil">
+                    <img src="" alt="foto perfil">
+                </div>
+            </section>
+
+            <section class="autentificacion">
+                <p>Autentificación en dos factores</p>
+                <div class="botones"> -->
+            <!-- <a  class="btnCambiar" href="/activarGoogleAut">Activar</a> -->
+            <!-- <a onclick="activarAut()" class="btnCambiar" href="javascript:void(0)">Activar</a>
+                    <a class="btneliminar" href="">Desactivar</a>
+                </div>
+            </section> -->
+
+            <!-- <section class="tarjetaPago">
+
+
+                <p>Tarjetas</p>
+                <div class="botones">
+                    <a onclick="agregarTarjeta()" class="btnCambiar" href="javascript:void(0)">Agregar</a>
+                    <a class="btneliminar" href="">Eliminar</a>
+                </div>
+            </section>
+
+            <section class="rutinas">
+                <p>Rutina actual</p>
+                <div class="botones">
+                    <a class="btnCambiar" href="">Cambiar</a>
+                    <a class="btneliminar" href="">Eliminar</a>
+                </div>
+            </section>
+
+            <section class="citas-nutricion">
+                <div>
+                    <p>Proxima cita con nutrición: </p>
+                    <p><%-citaNutri%></p>
+                </div>
+
+                <div class="botones">
+                    <a href="/cambiarCitaNutri" class="btnCambiar" href="">Cambiar</a>
+                    <a class="btneliminar" href="">Eliminar</a>
+                </div>
+
+            </section>
+
+            <section class="citas-fisio">
+                <div>
+                    <p>Proxima cita con fisioterapia: </p>
+
+                </div>
+
+                <div class="botones">
+                    <a class="btnCambiar" href="">Cambiar</a>
+                    <a class="btneliminar" href="">Eliminar</a>
+                </div>
+
+            </section>
+            <a href="/logout" class="btnCerrar">Cerrar sesión</a> -->
+
+            <section class="section-datos-personales">
+                <div class="datos-personales">
+                    <div>   
+                        <h4>Nombre: </h4>
+                        <p><%-nombre%></p>
+                    </div>
+
+                    <div>
+                        <h4>Fecha de nacimento:</h4>
+                        <p><%-fecha%></p>
+                    </div>
+
+                    <div>
+                        <h4>Estatura:</h4>
+                        <p><%-estatura%> cm</p>
+                    </div>
+
+                    <div>
+                        <h4>Peso:</h4>
+                        <p><%-peso%> kg</p>
+                    </div>
+
+                </div>
+                <div class="foto-perfil">
+                    <img src="" alt="foto perfil">
+                </div>
+            </section>
+
+            <section class="tarjetas">
+
+                <a class="tarjeta" href="">
+                    <img src="./assets/candado.png" alt="seguridad">
+                    <h3>Seguridad</h3>
+                </a>
+
+                <a class="tarjeta" href="">
+                    <img src="./assets/aprobado.png" alt="citas">
+                    <h3>Citas</h3>
+                </a>
+            </section>
+
+            <section class="tarjetas">
+
+                <a class="tarjeta" href="">
+                    <img src="./assets/rutina-de-ejercicio.png" alt="seguridad">
+                    <h3>Rutinas</h3>
+                </a>
+
+                <a class="tarjeta" href="">
+                    <img src="./assets/tarjetas-de-credito.png" alt="citas">
+                    <h3>Tarjetas</h3>
+                </a>
+            </section>
+
+            <!-- <figure class="logo">
+                <img src="./assets/GYM SPORTS.png" alt="">
+            </figure>  -->
+
+            <a href="/logout" class="btnCerrar">Cerrar sesión</a>
+
+        </section>
+        <%- include("partials/footer")%>
+    </main>
+
+
+
+
+
+    <!-- ******************************* -->
+    <!-- ************MODALS************* -->
+    <!-- ******************************* -->
+
+
+
+
+
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            <p> <%-error%> </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal para selecionar la verificación en dos pasos -->
+    <div id="aut-activar-modal" class="modal">
+        <div class="modal-aut">
+            <form id="activarSevicioGoogleAut" class="codigoGoogle">
+                <span class="close-btn" onclick="cerrarModal()">&times;</span>
+                <a id="activarGoogleAut" href="javascript:void(0)">Activar con Google Authenticator</a>
+                <a href="">Activar con el correo electrónico</a>
+                <a href="">Activar con el número de celular</a>
+                <div id="response"></div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="aut-desactivar-modal" class="modal">
+        <div class="modal-desact"></div>
+    </div>
+
+    <div id="tarjeta-activar-modal" class="modal">
+        <form action="">
+
+            <div class="modal-tarjeta">
+
+                <h3>Datos de la tarjeta</h3>
+                <div class="datos-tarjeta">
+                    <label for="nombre-titular">Nombre del titular:</label>
+                    <input class="nombre-titular" type="text" name="titular" id="nombre-titular">
+                </div>
+
+
+                <div class="datos-tarjeta">
+                    <label for="numero-tarjeta">Número tarjeta:</label>
+                    <input class="numero-tarjeta" type="number" name="num-tarjeta" maxlength="16" id="numero-tarjeta">
+                </div>
+
+                <div class="datos-tarjeta">
+                    <label for="mes-vencimineto">Mes</label>
+                    <select name="mes-vencimineto" id="mes-vencimineto">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                        <option value="">8</option>
+                        <option value="">9</option>
+                        <option value="">10</option>
+                        <option value="">11</option>
+                        <option value="">12</option>
+
+                    </select>
+
+                    <label for="anio-vencimineto">Año</label>
+                    <select class="anio-vencimineto" name="anio-vencimineto" id="anio-vencimineto">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+
+                    <label for="codigo-cvv">CVV</label>
+                    <input class="codigo-cvv" type="number" name="cvv" maxlength="3" id="codigo-cvv">
+                </div>
+
+                <h3>Dirección de facturación</h3>
+                <section class="s-facturacion">
+                    <section class="facturacion">
+                        <div class="datos-facturacion">
+                            <label for="pais">País</label>
+                            <select class="facturación" name="pais" id="pais"></select>
+                        </div>
+
+                        <div class="datos-facturacion">
+                            <label for="estado">Estado</label>
+                            <select class="facturación" name="estado" id="estado"></select>
+                        </div>
+
+                        <div class="datos-facturacion">
+                            <label for="ciudad">Ciudad</label>
+                            <select class="facturación" name="ciudad" id="ciudad"></select>
+                        </div>
+                    </section>
+                </section>
+
+                <input class="enviar" type="submit" value="Agregar">
+                <div id="message"></div>
+
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- Script para el mostrar errores en el modal errorModal -->
+    <script>
+        // Pasar la variable de EJS a JavaScript
+        let error = "<%= error ? error : '' %>";
+
+        // Mostrar el modal si hay un error
+        if (error.trim() !== "") {
+            document.getElementById("errorModal").style.display = "block";
+        }
+
+        // Función para cerrar el modal
+        function cerrarModal() {
+            document.getElementById("errorModal").style.display = "none";
+        }
+
+        // Cerrar el modal si se hace clic fuera de él
+        window.onclick = function (event) {
+            let modal = document.getElementById("errorModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <!-- Script para cerrar el modal  de activar verificación en 2 pasos -->
+    <script>
+
+        function activarAut() {
+            //e.preventDefault();
+            document.getElementById("aut-activar-modal").style.display = "block";
+        }
+        function cerrarModal() {
+            document.getElementById('response').innerText = ''
+            document.getElementById("aut-activar-modal").style.display = "none";
+        }
+        window.onclick = function (event) {
+            let modal = document.getElementById("aut-activar-modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+    <!-- Ajax para selecionar la verificación en dos pasos -->
+    <script>
+        document.getElementById('activarGoogleAut').addEventListener('click', function () {
+            fetch('/activarGoogleAut')
+                .then(response => {
+                    console.log(response)
+                    if (!response.ok) {
+                        throw new Error('Error en la solicitud');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.message === "activa") {
+                        document.getElementById('response').innerHTML = `
+                        <p>La autentificación de google ya está activada</p>`;
+                    } else {
+                        document.getElementById('response').innerHTML = `
+                        <section class="container">
+                           
+                                <h3>Código generado</h3>
+                                <input type="text" readonly value='${data.message}' id="secret" name="codigo">
+                                <h4>Dirígete a la aplicación de Google Authenticator y agrégalo</h4>
+                                <button onclick="copiarAlPortapapeles()">Copiar</button>   
+                                <input class="activar"type="submit" value="Activar">              
+                            
+                        </section>
+
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('response').innerHTML = 'Hubo un error al obtener los datos.';
+                });
+        })
+    </script>
+    <!-- Ajax para activar la verificación de Google -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('activarSevicioGoogleAut').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const codigo = document.getElementById('secret').value;
+
+                fetch('/activarSevicioGoogleAut', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ codigo: codigo })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la activación');
+                    }
+                    return response.json();
+                })
+                    .then(data => {
+                        document.getElementById('response').innerHTML = `<p>${data.message}</p>`;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('response').innerHTML = '<p>Hubo un error al activar el código.</p>';
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        function agregarTarjeta() {
+            //e.preventDefault();
+            document.getElementById("tarjeta-activar-modal").style.display = "block";
+            leerJSON()
+        }
+        function cerrarModal() {
+            document.getElementById('response').innerText = ''
+            document.getElementById("tarjeta-activar-modal").style.display = "none";
+        }
+        window.onclick = function (event) {
+            let modal = document.getElementById("tarjeta-activar-modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function leerJSON() {
+            const selectEstado = document.getElementById('estado');
+            const selectPais = document.getElementById('pais')
+            const selectCiudad = document.getElementById('ciudad');
+
+            fetch('data-paises.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // Convierte la respuesta en un objeto JSON
+                })
+                .then(data => {
+
+                    //agrega los paises al select
+                    const paises = data.paises
+                    const _paises = paises.filter(e => e.descripcion.toLowerCase().trim() === 'pais');
+                    _paises.forEach(e => {
+                        console.log(e.nombre, e.id);
+                        selectPais.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`
+                    })
+
+                    //agrega los estados al select                   
+                    selectPais.addEventListener('change', (event) => {
+                        const idPaisSeleccionado = event.target.value;
+                        const estados = paises.filter(e => e.descripcion.toLowerCase().trim() === 'estado' && e.id_asociado === idPaisSeleccionado);
+                        selectEstado.innerHTML = '<option value="">Seleccione un estado</option>'
+                        selectCiudad.innerHTML = '<option value="">Seleccione una ciudad</option>';
+                        estados.forEach(e => {
+                            selectEstado.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`;
+                        });
+                    });
+
+                    //agrega los ciudades al select
+                    const selectEstado = document.getElementById('estado')
+                    selectEstado.addEventListener('change', (event) => {
+                        selectCiudad.innerHTML = '<option value="">Seleccione una ciudad</option>';
+                        const idEstadoSeleccionado = event.target.value;
+                        const ciudades = paises.filter(e => e.descripcion.toLowerCase().trim() === 'ciudad' && e.id_asociado === idEstadoSeleccionado);
+
+                        ciudades.forEach(e => {
+                            selectCiudad.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`;
+                        });
+
+                    })
+                })
+                .catch(error => {
+                    console.error('Hubo un problema con la operación fetch:', error);
+                });
+        }
+
+    </script>
+    <!--script para copiar al portapapeles -->
+    <script>
+        function copiarAlPortapapeles() {
+            const input = document.getElementById("secret");
+            input.select();
+            input.setSelectionRange(0, 99999); // Para móviles
+            // Copiar al portapapeles
+            navigator.clipboard.writeText(input.value)
+                .then(() => {
+                    alert("Texto copiado al portapapeles");
+                })
+                .catch(err => {
+                    console.error("Error al copiar: ", err);
+                });
+        }
+    </script>
+
+
+</body>
+
+</html>
