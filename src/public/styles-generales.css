@@ -11,7 +11,7 @@ main {
   position: sticky;
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(rgba(253, 253, 253, 0.459), rgba(192, 67, 63, 0.5)),url(./assets/fitness\ portada.png )  ;
+  background-image: linear-gradient(rgba(253, 253, 253, 0.459), rgba(192, 67, 63, 0.5)),url(./assets/fitness_portada.png )  ;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
