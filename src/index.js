@@ -31,7 +31,7 @@ app.use(express.static(join(dir_name, "public")));
 
 //app.get('/', (req, res) => res.render('index.ejs'))
 app.listen(process.env.PORT || 3030);
-//const host = '0.0.0.0'
+const host = '0.0.0.0'
 console.log(
   `Server is  listening on port ${process.env.PORT || 3030}`
 );
