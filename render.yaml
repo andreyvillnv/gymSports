@@ -1,0 +1,37 @@
+# Exported from Render on 2025-04-20T02:29:28Z
+services:
+- type: web
+  name: gymSports
+  runtime: node
+  repo: https://github.com/andreyvillnv/gymSports
+  plan: free
+  envVars:
+  - key: HOST
+    sync: false
+  - key: PAYPAL_API
+    sync: false
+  - key: PAYPAL_SECRET
+    sync: false
+  - key: PAYPAL_CLIENT_ID
+    sync: false
+  - key: PORT
+    sync: false
+  - key: DATABASE
+    sync: false
+  - key: PASS
+    sync: false
+  - key: USER
+    sync: false
+  - key: JWT_SECRET
+    sync: false
+  - key: EMAIL_PASS
+    sync: false
+  - key: EMAIL_USER
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: node src/index.js
+  autoDeploy: false
+  buildFilter:
+  staticPublishPath: public
+version: "1"
