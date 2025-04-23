@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/styles-generales.css">
     <link rel="stylesheet" href="/styles-perfil.css">
-    <link rel="stylesheet" href="/styles-tarjeta.css">
+    <!-- // <link rel="stylesheet" href="/styles-tarjeta.css"> -->
     <title>Document</title>
 </head>
 
@@ -85,7 +85,7 @@
 
             <section class="section-datos-personales">
                 <div class="datos-personales">
-                    <div>   
+                    <div>
                         <h4>Nombre: </h4>
                         <p><%-nombre%></p>
                     </div>
@@ -113,12 +113,12 @@
 
             <section class="tarjetas">
 
-                <a class="tarjeta" href="">
-                    <img src="./assets/candado.png" alt="seguridad">
+                <a class="tarjeta">
+                    <img src="./assets/candado.png" id="seguridad" alt="seguridad">
                     <h3>Seguridad</h3>
                 </a>
 
-                <a class="tarjeta" href="">
+                <a class="tarjeta" href="" id="citastarjeta">
                     <img src="./assets/aprobado.png" alt="citas">
                     <h3>Citas</h3>
                 </a>
@@ -126,12 +126,12 @@
 
             <section class="tarjetas">
 
-                <a class="tarjeta" href="">
+                <a class="tarjeta" href="" id="rutinas">
                     <img src="./assets/rutina-de-ejercicio.png" alt="seguridad">
                     <h3>Rutinas</h3>
                 </a>
 
-                <a class="tarjeta" href="">
+                <a class="tarjeta" id="tarjetasUsuario" href="">
                     <img src="./assets/tarjetas-de-credito.png" alt="citas">
                     <h3>Tarjetas</h3>
                 </a>
@@ -146,19 +146,9 @@
         </section>
         <%- include("partials/footer")%>
     </main>
-
-
-
-
-
     <!-- ******************************* -->
     <!-- ************MODALS************* -->
     <!-- ******************************* -->
-
-
-
-
-
 
     <div id="errorModal" class="modal">
         <div class="modal-content">
@@ -167,11 +157,8 @@
         </div>
     </div>
 
-
-
-
     <!-- Modal para selecionar la verificación en dos pasos -->
-    <div id="aut-activar-modal" class="modal">
+    <!-- <div id="aut-activar-modal" class="modal">
         <div class="modal-aut">
             <form id="activarSevicioGoogleAut" class="codigoGoogle">
                 <span class="close-btn" onclick="cerrarModal()">&times;</span>
@@ -182,16 +169,13 @@
             </form>
 
         </div>
-    </div>
-
-
-
+    </div> -->
 
     <div id="aut-desactivar-modal" class="modal">
         <div class="modal-desact"></div>
     </div>
 
-    <div id="tarjeta-activar-modal" class="modal">
+    <!-- <div id="tarjeta-activar-modal" class="modal">
         <form action="">
 
             <div class="modal-tarjeta">
@@ -261,10 +245,140 @@
 
             </div>
         </form>
+    </div> -->
+
+    <div class="modalCitas">
+        <section class="citas">
+
+            <p>Proxima cita con nutrición:</p>
+
+
+            <p><%-citaNutri%></p>
+
+            <div class="botones">
+                <a href="/cambiarCitaNutri" class="btnCambiar" href="">Cambiar</a>
+                <a class="btneliminar" href="">Eliminar</a>
+            </div>
+
+
+            <p>Proxima cita con fisioterapia:</p>
+            <!-- <p><%-citaNutri%></p> -->
+
+
+            <div class="botones">
+                <a class="btnCambiar" href="">Cambiar</a>
+                <a class="btneliminar" href="">Eliminar</a>
+            </div>
+            <button id="cerrarModal">Cerrar</button>
+        </section>
     </div>
 
+    <div class="modalSeguridad">
+        <form id="activarSevicioGoogleAut" class="seguridad">
 
+            <h4>Autentificación en dos factores</h4>
+            <p>Google Authenticator:</p>
 
+            <div class="botones">
+                <a class="btnCambiar" id="activarGoogleAut" href="javascript:void(0)">Activar</a>
+                <!--    <a id="activarGoogleAut" href="javascript:void(0)">Activar con Google Authenticator</a> -->
+                <a class="btneliminar" href="">Desactivar</a>
+
+                <!-- <a href="/activarGoogleAut" class="btnCambiar" href="">Activar</a> -->
+            </div>
+            <p>Correo electrónico</p>
+            <div class="botones">
+                <a class="btnCambiar" href="">Cambiar</a>
+                <a class="btneliminar" href="">Eliminar</a>
+            </div>
+            <div id="response"></div>
+            <button id="cerrarModals">Cerrar</button>
+        </form>
+    </div>
+
+    <div class="modalRutina">
+
+        <section class="rutinas">
+            <p>Rutina actual</p>
+            <p>
+                <>
+            </p>
+            <div class="botones">
+                <a class="btnCambiar" href="">Cambiar</a>
+                <a class="btneliminar" href="">Eliminar</a>
+            </div>
+            <button id="cerrarModalr">Cerrar</button>
+        </section>
+    </div>
+
+    <div class="modaltarjeta">
+
+        <form action="" class="tarjetaForm">
+            <h3>Datos de la tarjeta</h3>
+            <section class="facturacion">
+                <div class="datos-tarjeta">
+                    <label for="nombre-titular">Nombre del titular:</label>
+                    <input class="nombre-titular" type="text" name="titular" id="nombre-titular">
+                </div>
+                <div class="datos-tarjeta">
+                    <label for="numero-tarjeta">Número tarjeta:</label>
+                    <input class="numero-tarjeta" type="number" name="num-tarjeta" maxlength="16" id="numero-tarjeta">
+                </div>
+                <div class="datos-tarjeta">
+                    <label for="mes-vencimineto">Mes</label>
+                    <select name="mes-vencimineto" id="mes-vencimineto">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                        <option value="">8</option>
+                        <option value="">9</option>
+                        <option value="">10</option>
+                        <option value="">11</option>
+                        <option value="">12</option>
+
+                    </select>
+
+                    <label for="anio-vencimineto">Año</label>
+                    <select class="anio-vencimineto" name="anio-vencimineto" id="anio-vencimineto">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+
+                    <label for="codigo-cvv">CVV</label>
+                    <input class="codigo-cvv" type="number" name="cvv" maxlength="3" id="codigo-cvv">
+                </div>
+            </section>
+
+            <h3>Dirección de facturación</h3>
+            <section class="s-facturacion">
+                <section class="facturacion">
+                    <div class="datos-facturacion">
+                        <label for="pais">País</label>
+                        <select class="facturación" name="pais" id="pais"></select>
+                    </div>
+
+                    <div class="datos-facturacion">
+                        <label for="estado">Estado</label>
+                        <select class="facturación" name="estado" id="estado"></select>
+                    </div>
+
+                    <div class="datos-facturacion">
+                        <label for="ciudad">Ciudad</label>
+                        <select class="facturación" name="ciudad" id="ciudad"></select>
+                    </div>
+                </section>
+            </section>
+
+            <input class="enviar" type="submit" value="Agregar">
+            <div id="message"></div>
+            <button id="cerrarModalt">Cerrar</button>
+        </form>
+
+    </div>
     <!-- Script para el mostrar errores en el modal errorModal -->
     <script>
         // Pasar la variable de EJS a JavaScript
@@ -308,8 +422,52 @@
 
     </script>
     <!-- Ajax para selecionar la verificación en dos pasos -->
+
     <script>
-        document.getElementById('activarGoogleAut').addEventListener('click', function () {
+        document.addEventListener("DOMContentLoaded", () => {
+            const google = document.getElementById('activarGoogleAut');
+            console.log(google);
+
+            google.addEventListener('click', function () {
+                fetch('/activarGoogleAut')
+                    .then(response => {
+                        console.log(response);
+                        if (!response.ok) {
+                            throw new Error('Error en la solicitud');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === "activa") {
+                            document.getElementById('response').innerHTML = `
+                            <p>La autentificación de Google ya está activada</p>`;
+                        } else {
+                            document.getElementById('response').innerHTML = `
+                                            <section class="container">
+                                            <h3>Código generado</h3>
+                                            <input type="text" readonly value='${data.message}' id="secret" name="codigo">
+                                            <h4>Dirígete a la aplicación de Google Authenticator y agrégalo</h4>
+                                            <button onclick="copiarAlPortapapeles()">Copiar</button>   
+                                            <input  class="activar" type="submit" value="Activar">              
+                                            </section>`;
+                        }
+                        const seguridad = document.querySelector(".seguridad");
+                        seguridad.style.width = '330px'
+                        seguridad.style.height = '600px'
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('response').innerHTML = 'Hubo un error al obtener los datos.';
+                    });
+            });
+        });
+
+    </script>
+    <!-- <script>
+      const google =  document.getElementById('activarGoogleAut')
+      console.log(google)
+      google.addEventListener('click', function () {
             fetch('/activarGoogleAut')
                 .then(response => {
                     console.log(response)
@@ -342,7 +500,7 @@
                     document.getElementById('response').innerHTML = 'Hubo un error al obtener los datos.';
                 });
         })
-    </script>
+    </script> -->
     <!-- Ajax para activar la verificación de Google -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -373,11 +531,21 @@
     </script>
 
     <script>
-        function agregarTarjeta() {
-            //e.preventDefault();
-            document.getElementById("tarjeta-activar-modal").style.display = "block";
+
+        const tarjetasUsuario = document.querySelector("#tarjetasUsuario");
+        const modalt = document.querySelector(".modaltarjeta");
+        const cerrarBtnt = document.getElementById("cerrarModalt");
+
+
+        //tarjetas
+        cerrarBtnt.addEventListener("click", () => {
+            modalt.style.display = "none";
+        });
+        tarjetasUsuario.addEventListener("click", (e) => {
+            e.preventDefault();
+            modalt.style.display = "block"; 
             leerJSON()
-        }
+        })
         function cerrarModal() {
             document.getElementById('response').innerText = ''
             document.getElementById("tarjeta-activar-modal").style.display = "none";
@@ -402,23 +570,25 @@
                     return response.json(); // Convierte la respuesta en un objeto JSON
                 })
                 .then(data => {
-
+                   
                     //agrega los paises al select
-                    const paises = data.paises
+                    const paises = data.paises[0]
+                    console.log(paises)
                     const _paises = paises.filter(e => e.descripcion.toLowerCase().trim() === 'pais');
                     _paises.forEach(e => {
                         console.log(e.nombre, e.id);
-                        selectPais.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`
+                        selectPais.innerHTML += `<option value="${e.id}">${e.nombre}</option>`
                     })
 
                     //agrega los estados al select                   
                     selectPais.addEventListener('change', (event) => {
                         const idPaisSeleccionado = event.target.value;
                         const estados = paises.filter(e => e.descripcion.toLowerCase().trim() === 'estado' && e.id_asociado === idPaisSeleccionado);
+                        console.log(estados)
                         selectEstado.innerHTML = '<option value="">Seleccione un estado</option>'
                         selectCiudad.innerHTML = '<option value="">Seleccione una ciudad</option>';
                         estados.forEach(e => {
-                            selectEstado.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`;
+                            selectEstado.innerHTML += `<option value="${e.id}">${e.nombre}</option>`;
                         });
                     });
 
@@ -430,7 +600,7 @@
                         const ciudades = paises.filter(e => e.descripcion.toLowerCase().trim() === 'ciudad' && e.id_asociado === idEstadoSeleccionado);
 
                         ciudades.forEach(e => {
-                            selectCiudad.innerHTML += `<option value="${e.idDP}">${e.nombre}</option>`;
+                            selectCiudad.innerHTML += `<option value="${e.id}">${e.nombre}</option>`;
                         });
 
                     })
@@ -458,6 +628,64 @@
         }
     </script>
 
+    <script>
+
+        // function mostrarModal() {
+        //     document.querySelector(".citasModal").style.display = "block";
+        // }
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const tarjeta = document.querySelector("#citastarjeta");
+            const modal = document.querySelector(".modalCitas");
+            const cerrarBtn = document.getElementById("cerrarModal");
+
+            const cerrarBtns = document.getElementById("cerrarModals");
+            const seguridad = document.querySelector("#seguridad");
+            const modalSeguridad = document.querySelector(".modalSeguridad");
+
+            const rutinas = document.querySelector("#rutinas");
+            const modalr = document.querySelector(".modalRutina");
+            const cerrarBtnr = document.getElementById("cerrarModalr");
+
+
+
+            //citas
+            tarjeta.addEventListener("click", (e) => {
+                e.preventDefault();
+                modal.style.display = "block";
+            });
+
+            cerrarBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+            //seguridad
+            cerrarBtns.addEventListener("click", () => {
+                document.getElementById('response').innerHTML = ''
+                modalSeguridad.style.display = "none";
+            });
+            seguridad.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                modalSeguridad.style.display = "block";
+            });
+
+            //rutinas
+            cerrarBtnr.addEventListener("click", () => {
+                modalr.style.display = "none";
+            });
+            rutinas.addEventListener("click", (e) => {
+                e.preventDefault();
+                modalr.style.display = "block";
+            });
+
+
+
+
+
+
+        });
+    </script>
 
 </body>
 
