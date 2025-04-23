@@ -6,7 +6,7 @@ export async function citaNutricion(data) {
     const fechaHora = `${data.fecha} ${data.hora}`;
     const connect = await abrirConexion();
     await connect.query(
-      `insert into nutricion (idcliente, fecha, descripcion) values(${data.user}, '${fechaHora}', '${data.descripcion}')`
+      `insert into nutricion (idcliente, fecha, descripcion) values(${data.idcliente}, '${fechaHora}', '${data.descripcion}')`
     );
     connect.end();
 
@@ -101,7 +101,7 @@ export async function citaFisio(data) {
     // console.log(data)
     const connect = await abrirConexion();
     await connect.query(
-      `insert into fisioterapia (idcliente, fecha, descripcion) values(${data.user}, '${fechaHora}', '${data.descripcion}')`
+      `insert into fisioterapia (idcliente, fecha, descripcion) values(${data.idcliente}, '${fechaHora}', '${data.descripcion}')`
     );
     connect.end();
   } catch (error) {
